@@ -8,7 +8,7 @@ Original file is located at
 
 <h1>Random Forest Regressor
 
-Neste notebook, Matheus aplicará o algorítmo Random Forest Regressor ao dataset de Melbourne
+In this code, Matheus will use the Random Forest Regressor algorithm at predicting prices of houses in Melbourne
 """
 
 #Mounting drive
@@ -29,15 +29,14 @@ y = melbourne_filt['Price']
 atributos = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 'YearBuilt', 'Lattitude', 'Longtitude']
 x = melbourne_filt[atributos]
 
-"""<h3>Aplicação do Algoritmo Random Forest"""
 
-#The model is born!
+#The RandomForest model is born!
 from sklearn.ensemble import RandomForestRegressor
 melbourne_model = RandomForestRegressor()
 melbourne_model.fit(x, y)
 
-"""<h3>Criação de Previsões"""
 
+#Creating Prediction
 from sklearn.model_selection import train_test_split
 #Split data into training and validation data, for both features and target
 #The split is based on a random number generator. Supplying a numeric value to
