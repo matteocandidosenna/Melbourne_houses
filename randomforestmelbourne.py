@@ -11,27 +11,27 @@ Original file is located at
 Neste notebook, Matheus aplicará o algorítmo Random Forest Regressor ao dataset de Melbourne
 """
 
-#Montando o Drive
+#Mounting drive
 from google.colab import drive
 drive.mount('/content/drive')
 
-#Importação e leitura dos dados
+#Importing and Reading data
 import pandas as pd
 melbourne = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/data_csv/melb_data.csv')
 
-#Analizando as colunas
+#Analyzing columns
 print(melbourne.dtypes)
 melbourne_filt = melbourne.dropna(axis = 0)
 print(list(melbourne))
 
-#Crição de Atributos
+#Atributes
 y = melbourne_filt['Price']
 atributos = ['Rooms', 'Bathroom', 'Landsize', 'BuildingArea', 'YearBuilt', 'Lattitude', 'Longtitude']
 x = melbourne_filt[atributos]
 
 """<h3>Aplicação do Algoritmo Random Forest"""
 
-#O algoritmo foi criado
+#The model is born!
 from sklearn.ensemble import RandomForestRegressor
 melbourne_model = RandomForestRegressor()
 melbourne_model.fit(x, y)
@@ -49,8 +49,8 @@ print('O algoritmo foi criado!')
 melbourne_model.fit(train_x, train_y)
 
 from sklearn.metrics import mean_absolute_error
-#Predição
+#Prediction
 pred = melbourne_model.predict(val_x)
 print(mean_absolute_error(val_y, pred))
 
-"""Este modelo (RandomForestRegressor) se saiu melhor para avaliar esta situção do que DecisionTreeRegressor. Este obteve MAE de 191958, enquanto DecisionTreeRegressor, 262978."""
+"""This model (RandomForestRegressor) did better to evaluate this situation than DecisionTreeRegressor(presnt in another repository of mine). This obtained MAE of 191958, while DecisionTreeRegressor, 262978."""
